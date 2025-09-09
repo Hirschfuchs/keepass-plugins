@@ -1,0 +1,16 @@
+{
+  "name": "recommended-plugins",
+  "version": "1.0.0",
+  "description": "Repository mit empfohlenen KeePass-Plugins",
+  "homepage": "https://github.com/Hirschfuchs/keepass-plugins#readme",
+  "bugs": {
+    "url": "https://github.com/Hirschfuchs/keepass-plugins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hirschfuchs/keepass-plugins.git"
+  },
+  "license": "ISC",
+  "author": "Bono Fox <git@bono-fox.de>",
+  "scripts": {}
+}
