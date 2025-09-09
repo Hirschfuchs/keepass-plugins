@@ -3,7 +3,7 @@ Dieses Repository enthält die KeePass-Plugins, die ich beim Neuaufsetzen von Ke
 Es ist public, falls jemand Inspiration sucht ;)
 
 ## Enthaltene Plugins
-Die enthaltenen Plugins sind in der [plugins-Datei](plugins.md) aufgelistet und beschrieben.
+Die enthaltenen 4 Plugins sind in der [plugins-Datei](plugins.md) aufgelistet und beschrieben.
 
 ## Automation
 Die Plugins liegen im Ordner `plugins`.
@@ -20,5 +20,5 @@ So kann beispielsweise die `fstab`-Datei erweitert werden:
 /github-repos/keepass-plugins/plugins /usr/share/keepass/Plugins none bind 0 0
 ```
 
-## Untersützte Version
+## Unterstützte Version
 Die Plugins sind auf KeePass 2.x ausgelegt und wurden auf Arch Linux getestet.
