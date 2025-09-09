@@ -1,0 +1,6 @@
+README.md
+plugins.md
+package-lock.json
+plugins/
+node_modules/
+.idea/
