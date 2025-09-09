@@ -7,6 +7,7 @@ on:
 
 concurrency:
   group: ${{ github.head_ref ||  github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pr:
@@ -18,16 +19,31 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.BOT_TOKEN }}
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Letzte Commit-Message laden
+        id: last_commit
+        run: |
+          last_commit_msg=$(git log -1 --pretty=%s)
+          echo "lastcommit=$last_commit_msg" >> $GITHUB_ENV
 
       - name: Abhängigkeiten laden
         run: npm ci
 
       - name: Code formatieren
-        if: "!contains(github.event.head_commit.message, '🎨 Code formatiert') && !contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        if: >-
+          ${{
+            !contains(env.lastcommit, '🎨 Code formatiert') &&
+            !contains(env.lastcommit, '🍱 Plugins aktualisiert (Ressourcen & Doku)')
+          }}
         run: npm run format-all
 
       - name: Add formatting-commit
-        if: "!contains(github.event.head_commit.message, '🎨 Code formatiert') && !contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        if: >-
+          ${{
+            !contains(env.lastcommit, '🎨 Code formatiert') &&
+            !contains(env.lastcommit, '🍱 Plugins aktualisiert (Ressourcen & Doku)')
+          }}
         run: |
           git config --global user.name 'OpenFoxes Maintenance Bot'
           git config --global user.email 'openfoxes@bono-fox.de'
@@ -39,11 +55,11 @@ jobs:
           }
 
       - name: Plugins aktualisieren
-        if: "!contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        if: ${{!contains(env.lastcommit, '🍱 Plugins aktualisiert (Ressourcen & Doku)')}}
         run: npm run run-all
 
       - name: Add README-commit
-        if: "!contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        if: ${{!contains(env.lastcommit, '🍱 Plugins aktualisiert (Ressourcen & Doku)')}}
         run: |
           git checkout ${{ github.event.pull_request.head.ref }}
           git add .
