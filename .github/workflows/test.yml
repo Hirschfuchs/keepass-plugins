@@ -1,0 +1,53 @@
+name: PR Pipeline
+on:
+  pull_request:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.head_ref ||  github.ref }}
+
+jobs:
+  pr:
+    name: Stand aktualisieren
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.BOT_TOKEN }}
+
+      - name: Abhängigkeiten laden
+        run: npm ci
+
+      - name: Code formatieren
+        if: "!contains(github.event.head_commit.message, '🎨 Code formatiert') && !contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        run: npm run format-all
+
+      - name: Add formatting-commit
+        if: "!contains(github.event.head_commit.message, '🎨 Code formatiert') && !contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        run: |
+          git config --global user.name 'OpenFoxes Maintenance Bot'
+          git config --global user.email 'openfoxes@bono-fox.de'
+          git checkout ${{ github.event.pull_request.head.ref }}
+          git add .
+          git diff-index --quiet ${{ github.event.pull_request.head.ref }} || {
+          git commit -m "🎨 Code formatiert"
+          git push origin ${{ github.event.pull_request.head.ref }}
+          }
+
+      - name: Plugins aktualisieren
+        if: "!contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        run: npm run run-all
+
+      - name: Add README-commit
+        if: "!contains(github.event.head_commit.message, '🍱 Plugins aktualisiert (Ressourcen & Doku)')"
+        run: |
+          git checkout ${{ github.event.pull_request.head.ref }}
+          git add .
+          git diff-index --quiet ${{ github.event.pull_request.head.ref }} || {
+          git commit -m "🍱 Plugins aktualisiert (Ressourcen & Doku)"
+          git push origin ${{ github.event.pull_request.head.ref }}
+          }
