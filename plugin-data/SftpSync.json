@@ -1,0 +1,8 @@
+{
+  "name": "SftpSync",
+  "description": "Dieses Plugin benötige ich auf Arch zum Abruf meines Kee-Files von einem FTP-Server.",
+  "version": "2.4.1",
+  "sourceUrl": "https://github.com/shellster/keepass-sftp-sync",
+  "sourceType": "github",
+  "fileName": "SftpSync.plgx"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "KeePassRPC",
+  "description": "KeePassRPC ermöglicht die Verbindung von KeePass zu Browsern über das `Kee-Plugin`. ",
+  "version": "v2.0.2",
+  "sourceUrl": "https://github.com/kee-org/keepassrpc",
+  "sourceType": "github",
+  "fileName": "KeePassRPC.plgx"
+}
