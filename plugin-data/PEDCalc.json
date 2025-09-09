@@ -1,0 +1,8 @@
+{
+  "name": "PEDCalc",
+  "description": "Via PEDCalc kann die Funktionalität des Ablaufens von Passwörtern verbessert werden. Bei der Änderung eines Passworts wird beispielsweise automatisch das Ablaufdatum angepasst.",
+  "version": "v1.14.2",
+  "sourceUrl": "https://github.com/Rookiestyle/PEDCalc",
+  "sourceType": "github",
+  "fileName": "PEDCalc.plgx"
+}
