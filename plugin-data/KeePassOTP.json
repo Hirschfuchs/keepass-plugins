@@ -1,7 +1,7 @@
 {
   "name": "KeePassOTP",
   "description": "Dieses Plugin ermöglicht die Speicherung, Verwaltung und den Abruf von OTPs in KeePass. In Verbindung mit KeePassRPC können OTP-Felder so auch vollautomatisch befüllt werden.",
-  "version": "v1.7",
+  "version": "v1.10.2",
   "sourceUrl": "https://github.com/Rookiestyle/KeePassOTP",
   "sourceType": "github",
   "fileName": "KeePassOTP.plgx"
