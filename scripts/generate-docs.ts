@@ -31,6 +31,49 @@ const generateReadme = (numberOfPlugins: number) => {
       "/github-repos/keepass-plugins/plugins /usr/share/keepass/Plugins none bind 0 0\n" +
       "```\n" +
       "\n" +
+      "## Automatische Pulls (Arch)\n" +
+      "Damit das Ganze auch fancy vollautomatisch funktioniert, sollen bei jedem Update mittels Pacman auch die Plugins aktualisiert werden.\n" +
+      "Dies kann mit ein paar einfachen Schritten erreicht werden:\n" +
+      "\n" +
+      "1. Klonen des Repos an einen beliebigen Ort `github-repos/keepass-plugins`. Optional kann hier der Bind-Mount eingerichtet werden.\n" +
+      "2. `/etc/pacman.conf` bearbeiten: Zeile `HookDir` einkommentieren und Ordner merken oder anpassen. Nachfolgend wird der Ordner in dieser Beschreibung als `/etc/pacman.d/hooks` bezeichnet.\n" +
+      "3. Ordner `/etc/pacman.d/hooks` erstellen.\n" +
+      "4. Datei `/etc/pacman.d/hooks/keepass-plugins.hook` erstellen. Diese Datei ist eine Konfiguration für Hooks, die rund um die Ausführung von Pacman triggern. In der Datei legen wir einen Trigger für ein durchgeführtes Package-Update an, welcher auf ein Script verweist:\n" +
+      "\n" +
+      "```\n" +
+      "[Trigger]\n" +
+      "Operation = Upgrade\n" +
+      "Type = Package\n" +
+      "Target = *\n" +
+      "\n" +
+      "[Action]\n" +
+      "Description = Update KeePass-Plugins\n" +
+      "When = PostTransaction\n" +
+      "Exec = /usr/local/bin/update-keepass-plugins.sh\n" +
+      "```\n" +
+      "\n" +
+      "6. Script in festgelegter Location (bspw `/usr/local/bin/update-keepass-plugins.sh`) erstellen. Dieses Script sollte eine beliebige Logik zum Updaten des Repos enthalten. In meinem Fall habe ich aktuelle Änderungen gestashed, den aktuellen Stand gezogen und den Stash wieder angewendet:\n" +
+      "\n" +
+      "```shell\n" +
+      "#!/bin/sh\n" +
+      'REPO_DIR="github-repos/keepass-plugins"\n' +
+      "\n" +
+      'cd "$REPO_DIR" || exit 1\n' +
+      "\n" +
+      "# Änderungen vorübergehend stashen\n" +
+      'git stash push -u -m "Auto stash before pull"\n' +
+      "\n" +
+      "# Immer von origin/main pullen\n" +
+      "git fetch origin\n" +
+      "git checkout main\n" +
+      "git pull --rebase origin main\n" +
+      "\n" +
+      "# Stash wieder anwenden\n" +
+      "git stash pop || true\n" +
+      "```\n" +
+      "\n" +
+      "7. Erfolg prüfen mit `pacman -Syu`.\n" +
+      "\n" +
       "## Unterstützte Version\n" +
       "Die Plugins sind auf KeePass 2.x ausgelegt und wurden auf Arch Linux getestet.",
   );
