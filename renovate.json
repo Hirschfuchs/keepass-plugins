@@ -34,10 +34,9 @@
       "customType": "regex",
       "managerFilePatterns": ["/^plugin-data\\/.*\\.json$/"],
       "matchStrings": [
-        "\"sourceUrl\"\\s*:\\s*\"https:\\/\\/github\\.com\\/(?<depName>[^\\/]+\\/[^\\/\"]+)\"[\\s\\S]*?\"version\"\\s*:\\s*\"(?<currentValue>[^\"]+)\"",
-        "\"version\"\\s*:\\s*\"(?<currentValue>[^\"]+)\"[\\s\\S]*?\"sourceUrl\"\\s*:\\s*\"https:\\/\\/github\\.com\\/(?<depName>[^\\/]+\\/[^\\/\"]+)\""
+        "\"sourceUrl\"\\s*:\\s*\"https:\\/\\/github\\.com\\/(?<packageName>[^\\/]+\\/(?<depName>[^\\/\"]+))\"[\\s\\S]*?\"version\"\\s*:\\s*\"(?<currentValue>[^\"]+)\"",
+        "\"version\"\\s*:\\s*\"(?<currentValue>[^\"]+)\"[\\s\\S]*?\"sourceUrl\"\\s*:\\s*\"https:\\/\\/github\\.com\\/(?<packageName>[^\\/]+\\/(?<depName>[^\\/\"]+))\""
       ],
-      "packageNameTemplate": "{{depName}}",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^(?<version>.*)$"
     }
