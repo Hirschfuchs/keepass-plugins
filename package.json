@@ -17,8 +17,8 @@
     "run-all": "ts-node scripts/run-all.ts"
   },
   "devDependencies": {
-    "@types/follow-redirects": "1.14.4",
-    "@types/node": "24.5.2",
+    "@types/follow-redirects": "~1.14.4",
+    "@types/node": "~24.5.2",
     "follow-redirects": "1.15.11",
     "prettier": "3.6.2",
     "ts-node": "10.9.2",
