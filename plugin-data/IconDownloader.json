@@ -1,0 +1,8 @@
+{
+  "name": "Yet Another Favicon Downloader",
+  "description": "Dieses Plugin lädt Favicons von den Webseiten der Passwörter herunter.",
+  "version": "v1.2.5.0",
+  "sourceUrl": "https://github.com/navossoc/KeePass-Yet-Another-Favicon-Downloader",
+  "sourceType": "github",
+  "fileName": "YetAnotherFaviconDownloader.plgx"
+}
