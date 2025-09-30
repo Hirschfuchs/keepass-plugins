@@ -22,6 +22,6 @@
     "follow-redirects": "1.15.11",
     "prettier": "3.6.2",
     "ts-node": "10.9.2",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   }
 }
