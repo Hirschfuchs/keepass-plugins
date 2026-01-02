@@ -3,7 +3,7 @@ Dieses Repository enthält die KeePass-Plugins, die ich beim Neuaufsetzen von Ke
 Es ist public, falls jemand Inspiration sucht ;)
 
 ## Enthaltene Plugins
-Die enthaltenen 5 Plugins sind in der [plugins-Datei](plugins.md) aufgelistet und beschrieben.
+Die enthaltenen 6 Plugins sind in der [plugins-Datei](plugins.md) aufgelistet und beschrieben.
 
 ## Automation
 Die Plugins liegen im Ordner `plugins`.
