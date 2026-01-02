@@ -1,0 +1,8 @@
+{
+  "name": "KeePass2-HaveIBeenPwned",
+  "description": "Dieses Plugin prüft Nutzernamen, Passwörter und Domains auf Kompromittierung.",
+  "version": "v1.3.6",
+  "sourceUrl": "https://github.com/andrew-schofield/keepass2-haveibeenpwned",
+  "sourceType": "github",
+  "fileName": "HaveIBeenPwned.plgx"
+}
