@@ -20,7 +20,7 @@
     "@types/follow-redirects": "~1.14.4",
     "@types/node": "~24.10.0",
     "follow-redirects": "1.15.11",
-    "prettier": "3.7.4",
+    "prettier": "3.8.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3"
   }
